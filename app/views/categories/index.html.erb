@@ -1,0 +1,19 @@
+<p><%= notice %></p>
+
+<h1 class="page-header">Categories</h1>
+<%= link_to 'New Category', new_category_path %>
+<div class="row">
+  <div class="col-md-4">
+    <% @categories.each do |category| %>
+      <h2><%= link_to category.name, category %></h2>
+      <%= link_to edit_category_path(category), title: 'Edit Category' do %>
+        <span class="glyphicon glyphicon-edit"></span>
+      <% end %>
+      <%= link_to category, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete Category' do %>
+        <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+      <p><%= category.description %></p>
+    <% end %>
+  </div>
+</div>
+<br>

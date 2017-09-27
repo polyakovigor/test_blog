@@ -1,0 +1,16 @@
+<h1 class="page-header"><%= @post.name %></h1>
+<div class="row">
+  <%= link_to edit_post_path(@post), title: 'Edit Post', class: 'col-sm-1' do %>
+    <span class="glyphicon glyphicon-edit"></span>
+  <% end %>
+  <%= link_to category_path(@post.category_id), title: 'Back', class: 'col-sm-1' do %>
+    <span class="glyphicon glyphicon-arrow-left"></span>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-sm-9">
+    <hr>
+    <p><%= @post.content %></p>
+    <p><%= @post.file %></p>
+  </div>
+</div>

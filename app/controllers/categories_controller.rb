@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @posts = @category.posts.all
+    @posts = @category.posts
   end
 
   def new
@@ -19,35 +19,29 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
 
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.save
+      flash[:success] = 'Category was successfully created.'
+      redirect_to @category
+    else
+      flash[:error] = @category.errors.full_messages
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.update(category_params)
+      flash[:success] = 'Category was successfully updated.'
+      redirect_to @category
+    else
+      flash[:error] = @category.errors.full_messages
+      render :edit
     end
   end
 
   def destroy
     @category.destroy
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Category was successfully destroyed.'
+    redirect_to categories_url
   end
 
   private

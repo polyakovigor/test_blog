@@ -1,0 +1,21 @@
+<h1 class="page-header"><%= @category.name %></h1>
+<div class="row">
+  <%= link_to 'New Post', new_category_post_path(category_id: @category.id) %>
+  <%= link_to edit_category_path(@category), title: 'Edit Category', class: 'col-sm-1' do %>
+      <span class="glyphicon glyphicon-edit"></span>
+  <% end %>
+  <%= link_to categories_path, title: 'Back', class: 'col-sm-1' do %>
+    <span class="glyphicon glyphicon-arrow-left"></span>
+  <% end %>
+</div>
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-sm-9">
+      <hr>
+      <h4><%= link_to post.name, post %></h4>
+      <br>
+      <p><%= post.content %></p>
+      <p><%= post.file %></p>
+    </div>
+  <% end %>
+</div>
