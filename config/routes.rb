@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :destroy]
   end
   resources :posts, except: [:new, :create, :destroy]
+
+  mount ActionCable.server => '/cable'
 end

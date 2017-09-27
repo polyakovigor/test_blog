@@ -1,24 +1,9 @@
-# README
+# A blog with categorized posts 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* gem 'Bootstrap-sass' - for styling
 
-Things you may want to cover:
+* gem 'Carrierwave' - for file uploading
 
-* Ruby version
+* gem 'pg' - for database
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Comments realized with Action Cable and Active Job
